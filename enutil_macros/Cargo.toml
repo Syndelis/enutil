@@ -2,6 +2,14 @@
 name = "enutil_macros"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+authors = ["Brenno Lemos <dev@breno.codes>"]
+description = "General Enum Utility Macros"
+keywords = ["enum", "macros", "proc-macros", "util", "utility"]
+categories = ["development-tools::procedural-macro-helpers"]
+homepage = "https://github.com/Syndelis/enutil"
+repository = "https://github.com/Syndelis/enutil"
+readme = "../README.md"
 
 [lib]
 proc-macro = true
