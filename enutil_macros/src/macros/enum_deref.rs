@@ -1,8 +1,10 @@
 use proc_macro2::{Ident, TokenStream};
 use quote::quote;
-use syn::{Data, DeriveInput, Fields, FieldsUnnamed, Meta};
+use syn::{Data, DeriveInput, Meta};
 
-use crate::utils::{get_new_type_variant, errors::no_associated_deref_type_specified, errors::non_enum_error};
+use crate::utils::{
+    errors::no_associated_deref_type_specified, errors::non_enum_error, get_new_type_variant,
+};
 
 pub fn enum_deref_inner(ast: &DeriveInput) -> syn::Result<TokenStream> {
     let name = &ast.ident;

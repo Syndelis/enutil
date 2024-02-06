@@ -1,6 +1,5 @@
-use std::ops::{Deref, DerefMut};
-use enutil::EnumDeref;
 use enutil_macros::EnumDeref;
+use std::ops::{Deref, DerefMut};
 
 #[test]
 fn homogeneous_enum() {
