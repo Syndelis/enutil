@@ -1,0 +1,16 @@
+[package]
+name = "enutil_macros"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+name = "enutil_macros"
+
+[dependencies]
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "2.0", features = ["parsing", "extra-traits"] }
+
+[dev-dependencies]
+enutil = { path = "../enutil" }

@@ -1,0 +1,14 @@
+[package]
+name = "enutil"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+enutil_macros = { path = "../enutil_macros", optional = true }
+
+[dev-dependencies]
+enutil_macros = { path = "../enutil_macros" }
+
+
+[features]
+derive = ["enutil_macros"]
