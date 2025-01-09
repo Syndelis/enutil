@@ -4,7 +4,7 @@ use syn::{Data, DeriveInput};
 
 use crate::utils::errors::non_struct_error;
 
-pub fn into_insertion_arrays_inner(ast: &DeriveInput) -> syn::Result<TokenStream> {
+pub fn into_field_vecs_inner(ast: &DeriveInput) -> syn::Result<TokenStream> {
     let name = &ast.ident;
     let gen = &ast.generics;
     let (impl_generics, ty_generics, where_clause) = gen.split_for_impl();
@@ -40,10 +40,10 @@ pub fn into_insertion_arrays_inner(ast: &DeriveInput) -> syn::Result<TokenStream
             #( Vec<#types> ),*
         );
 
-        impl #impl_generics ::enutil::IntoInsertionArrays for #name #ty_generics #where_clause {
+        impl #impl_generics ::enutil::IntoFieldVecs for #name #ty_generics #where_clause {
             type Target = #field_arrays_type_name;
 
-            fn into_insertion_arrays(els: Vec<Self>) -> Self::Target {
+            fn into_field_vecs(els: Vec<Self>) -> Self::Target {
                 els.into_iter()
                     .map(|el| (
                         #( el.#idents ),*

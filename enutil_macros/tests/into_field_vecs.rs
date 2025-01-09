@@ -1,9 +1,9 @@
-use enutil::IntoInsertionArrays;
-use enutil_macros::IntoInsertionArrays;
+use enutil::IntoFieldVecs;
+use enutil_macros::IntoFieldVecs;
 
 #[test]
 fn base_test() {
-    #[derive(IntoInsertionArrays)]
+    #[derive(IntoFieldVecs)]
     struct Entry {
         id: i32,
         name: String,
@@ -20,7 +20,7 @@ fn base_test() {
         },
     ];
 
-    let (ids, names) = IntoInsertionArrays::into_insertion_arrays(entries);
+    let (ids, names) = IntoFieldVecs::into_field_vecs(entries);
     assert_eq!(&ids, &[0, 1]);
     assert_eq!(&names, &["First", "Second"]);
 }

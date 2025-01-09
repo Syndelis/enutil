@@ -16,8 +16,8 @@ impl<T: std::ops::Deref + std::ops::DerefMut> EnumDeref for T {}
 ///
 /// [SQLx]: https://docs.rs/sqlx
 /// [Read more]: https://github.com/launchbadge/sqlx/blob/main/FAQ.md#how-can-i-bind-an-array-to-a-values-clause-how-can-i-do-bulk-inserts
-pub trait IntoInsertionArrays: Sized {
+pub trait IntoFieldVecs: Sized {
     type Target;
 
-    fn into_insertion_arrays(rows: Vec<Self>) -> Self::Target;
+    fn into_field_vecs(rows: Vec<Self>) -> Self::Target;
 }

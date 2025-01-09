@@ -1,6 +1,6 @@
 [package]
 name = "enutil"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 license = "MIT"
 authors = ["Brenno Lemos <dev@breno.codes>"]
@@ -12,7 +12,7 @@ repository = "https://github.com/Syndelis/enutil"
 readme = "../README.md"
 
 [dependencies]
-enutil_macros = { path = "../enutil_macros", optional = true, version = "0.1.0" }
+enutil_macros = { path = "../enutil_macros", optional = true, version = "0.2.0" }
 
 [dev-dependencies]
 enutil_macros = { path = "../enutil_macros" }
