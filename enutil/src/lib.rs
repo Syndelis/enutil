@@ -7,3 +7,17 @@ pub use enutil_macros::*;
 pub trait EnumDeref: std::ops::Deref + std::ops::DerefMut {}
 
 impl<T: std::ops::Deref + std::ops::DerefMut> EnumDeref for T {}
+
+/// A trait for converting a Vec<T> into multiple Vec's for each field of T
+/// (Vec<T.a>, Vec<T.b>, ...).
+///
+/// Its intended use case is to allow for inserting multiple rows to the
+/// database when using [SQLx]'s macros. [Read more]
+///
+/// [SQLx]: https://docs.rs/sqlx
+/// [Read more]: https://github.com/launchbadge/sqlx/blob/main/FAQ.md#how-can-i-bind-an-array-to-a-values-clause-how-can-i-do-bulk-inserts
+pub trait IntoInsertionArrays: Sized {
+    type Target;
+
+    fn into_insertion_arrays(rows: Vec<Self>) -> Self::Target;
+}

@@ -81,3 +81,12 @@ pub fn enum_deref(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
     toks.into()
 }
+
+#[proc_macro_derive(IntoInsertionArrays)]
+pub fn into_insertion_arrays(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    let ast = syn::parse_macro_input!(input as DeriveInput);
+    let toks = macros::into_insertion_arrays::into_insertion_arrays_inner(&ast)
+        .unwrap_or_else(|err| err.to_compile_error());
+
+    toks.into()
+}
