@@ -33,7 +33,7 @@ pub fn into_field_vecs_inner(ast: &DeriveInput) -> syn::Result<TokenStream> {
             },
         );
 
-    let field_arrays_type_name = syn::Ident::new(&format!("{name}FieldArrays"), name.span());
+    let field_arrays_type_name = syn::Ident::new(&format!("{name}FieldVecs"), name.span());
 
     Ok(quote! {
         pub type #field_arrays_type_name = (
@@ -48,7 +48,7 @@ pub fn into_field_vecs_inner(ast: &DeriveInput) -> syn::Result<TokenStream> {
                     .map(|el| (
                         #( el.#idents ),*
                     ))
-                    .fold(Default::default(), |( #( mut #vecs ),* ), ( #( #idents ),* )| {
+                    .fold((#( Vec::<#types>::new() ),*), |( #( mut #vecs ),* ), ( #( #idents ),* )| {
                         #( #vecs.push(#idents); )*
                         ( #( #vecs ),* )
                     })
